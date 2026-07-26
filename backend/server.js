@@ -33,6 +33,19 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // ============================================
+// SERVER ARQUIVOS ESTÁTICOS (FRONTEND)
+// ============================================
+
+// Serve os arquivos do frontend (HTML, CSS, JS)
+const path = require('path');
+app.use(express.static(path.join(__dirname, '../frontend')));
+
+// Rota para a página principal
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/index.html'));
+});
+
+// ============================================
 // 5. ROTAS
 // ============================================
 
