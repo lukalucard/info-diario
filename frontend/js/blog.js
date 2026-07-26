@@ -8,7 +8,7 @@
 // ============================================
 
 // URL da API que criamos no backend
-const API_URL = 'http://localhost:3006/api/news';
+const API_URL = 'https://info-diario.onrender.com/api/news';
 
 // Referência para a div onde as notícias vão aparecer
 const container = document.getElementById('noticias');
