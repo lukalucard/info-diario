@@ -63,9 +63,10 @@ header h1::before {
 /* ========== NOTÍCIAS ========== */
 #news-container {
     margin-top: 35px;
-    display: flex;
-    flex: 1;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    justify-content: center;
 }
 
 .loading {
