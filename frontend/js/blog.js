@@ -49,16 +49,12 @@ async function carregarNoticias() {
 // ============================================
 
 function exibirNoticias(noticias) {
-    // Limpa o container
     container.innerHTML = '';
 
-    // Percorre cada notícia
     noticias.forEach(noticia => {
-        // Cria um elemento <div> para cada notícia
         const card = document.createElement('div');
-        card.className = 'card-noticia';
+        card.className = 'news-card';  // ← Classe correta
 
-        // Formata a data
         const data = new Date(noticia.published_at);
         const dataFormatada = data.toLocaleDateString('pt-BR', {
             day: '2-digit',
@@ -68,18 +64,16 @@ function exibirNoticias(noticias) {
             minute: '2-digit'
         });
 
-        // Monta o HTML da notícia
         card.innerHTML = `
-            <h2>${noticia.title}</h2>
-            <div class="meta">
-                <span>📰 ${noticia.source || 'Info Diário'}</span>
-                <span>🕐 ${dataFormatada}</span>
-                ${noticia.category ? `<span class="categoria">${noticia.category}</span>` : ''}
+            <h2 class="news-title">${noticia.title}</h2>
+            <div class="news-meta">
+                <span class="source">📰 ${noticia.source || 'Info Diário'}</span>
+                <span class="date">🕐 ${dataFormatada}</span>
+                ${noticia.category ? `<span class="category">${noticia.category}</span>` : ''}
             </div>
-            ${noticia.description ? `<p>${noticia.description}</p>` : ''}
+            ${noticia.description ? `<p class="news-description">${noticia.description}</p>` : ''}
         `;
 
-        // Adiciona o card no container
         container.appendChild(card);
     });
 }
