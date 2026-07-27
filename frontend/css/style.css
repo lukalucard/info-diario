@@ -16,7 +16,6 @@ body {
 }
 
 .container {
-    width: 100%;
     max-width: 1320px;
     margin: 0 auto;
     padding: 0 20px;
@@ -85,6 +84,7 @@ header h1::before {
     box-shadow: 0 2px 12px rgba(0,0,0,0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-left: 5px solid #0f3460;
+    max-width: 400px; /* ← ADICIONE ESTA LINHA */
 }
 
 .news-card:hover {
