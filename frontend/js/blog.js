@@ -53,7 +53,7 @@ function exibirNoticias(noticias) {
 
     noticias.forEach(noticia => {
         const card = document.createElement('div');
-        card.className = 'news-card';  // ← Classe correta
+        card.className = 'news-card';
 
         const data = new Date(noticia.published_at);
         const dataFormatada = data.toLocaleDateString('pt-BR', {
@@ -64,8 +64,17 @@ function exibirNoticias(noticias) {
             minute: '2-digit'
         });
 
+        // 🟢 NOVO: Verifica se a notícia tem URL
+        const urlOriginal = noticia.url || noticia.link || '#';
+        const temUrl = urlOriginal !== '#';
+
         card.innerHTML = `
-            <h2 class="news-title">${noticia.title}</h2>
+            <h2 class="news-title">
+                ${temUrl 
+                    ? `<a href="${urlOriginal}" target="_blank" rel="noopener noreferrer">${noticia.title}</a>`
+                    : noticia.title
+                }
+            </h2>
             <div class="news-meta">
                 <span class="source">📰 ${noticia.source || 'Info Diário'}</span>
                 <span class="date">🕐 ${dataFormatada}</span>
